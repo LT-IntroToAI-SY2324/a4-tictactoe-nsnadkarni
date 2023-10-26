@@ -14,11 +14,11 @@ def check_col(pos: int, player: str, board: list) -> bool:
 
 def check_diag(pos: int, player: str, board: list, a: bool) -> bool:
     if(a == True):
-        if board[pos] == player and board[pos + 4] == player and board[pos + 8]:
+        if board[pos] == player and board[pos + 4] == player and board[pos + 8] == player:
             return True
         return False
     else:
-        if board[pos] == player and board[pos + 2] == player and board[pos + 4]:
+        if board[pos] == player and board[pos + 2] == player and board[pos + 4] == player:
             return True
         return False
 
@@ -60,24 +60,31 @@ class TTTBoard:
     def game_over(self):
         b = "X"
         c = self.board
-        if check_col(0, b, c) or check_col(1, b, c) or check_col(2, b, c):
-            return True
-        if check_row(0, b, c) or check_row(3, b, c) or check_row(6, b, c):
-            return True
+
+        for i in range(3):
+            if check_col(i, b, c):
+                return True
+        for i in [0, 3, 6]:
+            if check_row(i, b, c):
+                return True
         if check_diag(0, b, c, True) or check_diag(2, b, c, False):
             return True
+
         b = "O"
         c = self.board
-        if check_col(0, b, c) or check_col(1, b, c) or check_col(2, b, c):
-            return True
-        if check_row(0, b, c) or check_row(3, b, c) or check_row(6, b, c):
-            return True
+        for i in range(3):
+            if check_col(i, b, c):
+                return True
+        for i in [0, 3, 6]:
+            if check_row(i, b, c):
+                return True
         if check_diag(0, b, c, True) or check_diag(2, b, c, False):
             return True
+
         for i in range(8):
             if(self.board[i] == '*'):
-                break
-        return False
+                return False
+        return True
 
     def clear(self):
         self.board = ['*'] * 9
@@ -162,4 +169,4 @@ if __name__ == "__main__":
     print("All tests passed!")
 
     # uncomment to play!
-    # play_tic_tac_toe()
+    #play_tic_tac_toe()
