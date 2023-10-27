@@ -114,15 +114,15 @@ def prospect(player: str, board: list) -> int:
             if i == 0:
                 if bounds(i + 1, board):
                     if bounds(i + 2, board):
-                        return i + 1
+                        return i + 2
             if i == 3:
                 if bounds(i + 1, board):
                     if bounds(i + 2, board):
-                        return i + 1
+                        return i + 2
             if i == 6:
                 if bounds(i + 1, board):
                     if bounds(i + 2, board):
-                        return i + 1
+                        return i + 2
 
         if board[i] == player:
             if i == 0:
@@ -132,11 +132,11 @@ def prospect(player: str, board: list) -> int:
             if i == 1:
                 if bounds(i + 3, board):
                     if bounds(i + 6, board):
-                        return i + 3
+                        return i + 6
             if i == 2:
                 if bounds(i + 3, board):
                     if bounds(i + 6, board):
-                        return i + 1
+                        return i + 6
             
 
     arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
