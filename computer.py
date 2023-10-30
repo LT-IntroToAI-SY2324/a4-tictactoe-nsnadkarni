@@ -133,7 +133,7 @@ def play_tic_tac_toe(a: int) -> None:
         else:
             if brd.make_move(players[turn], int(move)):
                 turn = not turn
-        os.system("clear")
+        os.system("cls")
         
     print(f"\nGame over!\n\n{brd}")
     if brd.has_won(players[0]):
